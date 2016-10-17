@@ -1,0 +1,18 @@
+{
+    "name": "winnipass/php-request",
+    "type": "library",
+    "description": "Request Man is a PHP HTTP client library",
+    "keywords": ["http", "rest", "web service", "curl", "client", "HTTP client","guzzle","nategood"],
+    "homepage": "",
+    "license": "MIT",
+    "require":{
+        "illuminate/support": "^5.3",
+        "guzzlehttp/guzzle": "^6.2",
+        "nategood/httpful": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "RequestMan\\": "src/"
+        }
+    }
+}
