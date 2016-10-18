@@ -31,7 +31,7 @@ class RequestMan
         }
     }
 
-    public function fire(){
+    public function send(){
 
         self::$response = self::$client->request();
         

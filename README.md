@@ -10,9 +10,7 @@ use RequestMan\RequestMan;
 # making a request 
 $url = "https://jsonplaceholder.typicode.com/posts";
 
-$response = RequestMan::setUrl( $url )->setClient('cUrL')->fire();
-
-supported clients => curl / guzzle
+$response = RequestMan::setUrl( $url )->setClient('guzzle')->send();
 
 # get raw data
 var_dump($response->toRaw());
@@ -25,7 +23,10 @@ visit https://laravel.com/docs/5.3/collections for more details
 var_dump($response->toCollection()->toArray());
 
 # get status code
-echo 'Status Code : '. RequestMan::getStatusCode() .'<br>';
+echo RequestMan::getStatusCode();
 
 # get content type
-echo 'Content Type : '. RequestMan::getContentType() .'<br>';
+echo RequestMan::getContentType();
+
+# supported clients
+curl, guzzle
