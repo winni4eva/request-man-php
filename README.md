@@ -8,18 +8,18 @@ require_once __DIR__ . "/vendor/autoload.php";
 use RequestMan\RequestMan;
 
 # making a request 
-# set url
-# set client (curl or guzzle)
-# methods can be chained
 $url = "https://jsonplaceholder.typicode.com/posts";
 
 $response = RequestMan::setUrl( $url )->setClient('cUrL')->fire();
 
+supported clients => curl / guzzle
+
 # get raw data
 var_dump($response->toRaw());
 
-# convert response to a laravel collection https://laravel.com/docs/5.3/collections
+# convert response to a laravel collection 
 var_dump($response->toCollection());
+visit https://laravel.com/docs/5.3/collections for more details
 
 # convert response to array
 var_dump($response->toCollection()->toArray());
