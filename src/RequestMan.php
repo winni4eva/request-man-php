@@ -21,7 +21,7 @@ class RequestMan
 
     protected function __construct(){
         if(!self::$requestUrl) throw new Exception("No request url set");
-        $client = self::$requestClient.'Client';
+        $client = ucfirst( strtolower( self::$requestClient ) ) . 'Client';
         self::$client = new $client;
     }
 
