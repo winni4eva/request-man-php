@@ -14,7 +14,8 @@ class GuzzleClient extends AbstractRequest implements RequestInterface{
         parent::$endpoint = $url;
         parent::$method = $method;
         parent::$post = $post;
-        self::$guzzle = new Client;
+        //self::$guzzle = new Client;
+        //self::$guzzle = new \GuzzleHttp\Client()
     }
 
     public static function request(){
@@ -24,7 +25,9 @@ class GuzzleClient extends AbstractRequest implements RequestInterface{
 
     private function execute(){
 
-        $res = self::$guzzle->request(parent::$method, parent::$endpoint);
+        $client = new \GuzzleHttp\Client();
+
+        $res = $client->request(parent::$method, parent::$endpoint);
 
         parent::$http_status_code = $res->getStatusCode();
         
@@ -35,7 +38,7 @@ class GuzzleClient extends AbstractRequest implements RequestInterface{
     }
 
     public function getClient(){
-        return self::$guzzle;
+        //return self::$guzzle;
     }
 
 }
