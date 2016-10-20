@@ -1,4 +1,5 @@
 <?php
+namespace RequestMan;
 
 trait RequestTrait{
 
