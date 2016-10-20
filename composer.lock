@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d28794eab19bcfb9a6c801a8903182d3",
-    "content-hash": "9e4fac20872aa3f8345d61dfbaa66ff7",
+    "hash": "75d32293bd2e54c10be88bc461bf2e7a",
+    "content-hash": "f56d856ec7a29232756f9d57e35aea6d",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -76,16 +76,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.2.2",
+            "version": "6.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "ebf29dee597f02f09f4d5bbecc68230ea9b08f60"
+                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ebf29dee597f02f09f4d5bbecc68230ea9b08f60",
-                "reference": "ebf29dee597f02f09f4d5bbecc68230ea9b08f60",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/3f808fba627f2c5b69e2501217bf31af349c1427",
+                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427",
                 "shasum": ""
             },
             "require": {
@@ -134,7 +134,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2016-10-08 15:01:37"
+            "time": "2016-07-15 17:22:37"
         },
         {
             "name": "guzzlehttp/promises",
