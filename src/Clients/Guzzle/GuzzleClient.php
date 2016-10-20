@@ -28,7 +28,7 @@ class GuzzleClient extends AbstractRequest implements RequestInterface{
         
         parent::$content_type = $res->getHeaderLine('content-type');
         
-        return parent::$response = $res->getBody();
+        return parent::$response = $res->getBody()->getContents();
     
     }
 
