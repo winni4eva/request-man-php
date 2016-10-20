@@ -4,9 +4,12 @@ namespace RequestMan\Clients\Curl;
 
 use RequestMan\AbstractRequest;
 use RequestMan\RequestInterface;
+use RequestMan\RequestTrait;
 
 class CurlClient extends AbstractRequest implements RequestInterface{
 
+    use RequestTrait;
+    
     protected $returnTransfer; 
 
     protected $followLocation; 
@@ -30,10 +33,6 @@ class CurlClient extends AbstractRequest implements RequestInterface{
         $this->timeout = $timeout;
 
         $this->header = $header;
-    }
-
-    public static function request( ){
-        return (new self(parent::$endpoint))->execute();
     }
 
     private function execute(){

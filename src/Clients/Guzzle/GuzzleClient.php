@@ -4,10 +4,13 @@ namespace RequestMan\Clients\Guzzle;
 
 use RequestMan\AbstractRequest;
 use RequestMan\RequestInterface;
+use RequestMan\RequestTrait;
 use GuzzleHttp\Client;
 
 class GuzzleClient extends AbstractRequest implements RequestInterface{
 
+    use RequestTrait;
+    
     protected static $guzzle;
 
     public function __construct($url, $method = 'GET', array $post = []){
@@ -15,11 +18,6 @@ class GuzzleClient extends AbstractRequest implements RequestInterface{
         parent::$method = $method;
         parent::$post = $post;
         self::$guzzle = new Client;
-    }
-
-    public static function request(){
-
-         return (new self(parent::$endpoint))->execute();
     }
 
     private function execute(){

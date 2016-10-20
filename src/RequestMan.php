@@ -79,4 +79,6 @@ class RequestMan
         return new static;
     }
 
+    private function getRequestClient(){}
+
 }
