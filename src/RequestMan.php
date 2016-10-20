@@ -22,7 +22,7 @@ class RequestMan
     protected function __construct(){
         if(!self::$requestUrl) throw new Exception("No request url set");
         $clientName = ucfirst( strtolower( self::$requestClient ) );
-        $client = "\RequestMan\Clients\\".$clientName."\\".$clientName."Client\\".$clientName."Client";
+        $client = "RequestMan\Clients\{$clientName}\{$clientName}Client";
         self::$client = new $client;
     }
 
