@@ -43,7 +43,7 @@ class CurlClient extends AbstractRequest implements RequestInterface{
         curl_setopt_array($ch, [
             CURLOPT_URL => parent::$endpoint,
             CURLOPT_RETURNTRANSFER => $this->returnTransfer,
-            CURLOPT_USERAGENT => $this->agent,
+            CURLOPT_USERAGENT => parent::$agent,
             CURLOPT_FOLLOWLOCATION => $this->followLocation,
             CURLOPT_TIMEOUT => $this->timeout,
             //CURLOPT_CONNECTTIMEOUT => 60,
