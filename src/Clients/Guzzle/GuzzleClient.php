@@ -19,16 +19,16 @@ class GuzzleClient extends AbstractRequest implements RequestInterface{
 
     public static function request(){
 
-         return (new self(self::$endpoint))->execute();
+         return (new self(parent::$endpoint))->execute();
     }
 
     private function execute(){
 
         $res = self::$guzzle->request(self::$method, self::$endpoint);
 
-        self::$http_status_code = $res->getStatusCode();
+        parent::$http_status_code = $res->getStatusCode();
         
-        self::$content_type = $res->getHeaderLine('content-type');
+        parent::$content_type = $res->getHeaderLine('content-type');
         
         return parent::$response = $res->getBody();
     
