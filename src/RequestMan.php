@@ -23,7 +23,7 @@ class RequestMan
         if(!self::$requestUrl) throw new Exception("No request url set");
         $clientName = ucfirst( strtolower( self::$requestClient ) );
         $client = "RequestMan\\Clients\\{$clientName}\\{$clientName}Client";
-        self::$client = new $client;
+        self::$client = new $client(self::$requestUrl);
     }
 
     public function send(){
