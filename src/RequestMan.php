@@ -19,14 +19,12 @@ class RequestMan
 
     private static $requestUrl;
 
-    protected function __construct(){
-        if(!self::$requestUrl) throw new Exception("No request url set");
-        $clientName = ucfirst( strtolower( self::$requestClient ) );
-        $client = "RequestMan\\Clients\\{$clientName}\\{$clientName}Client";
-        self::$client = new $client(self::$requestUrl);
-    }
 
     public function send(){
+
+        if(!self::$requestUrl) throw new Exception("No request url set");
+
+        $this->buildRequestClient();
 
         self::$response = self::$client->request();
 
@@ -79,6 +77,12 @@ class RequestMan
         return new static;
     }
 
-    private function getRequestClient(){}
+    private function buildRequestClient(){
+        $clientName = ucfirst( strtolower( self::$requestClient ) );
+
+        $client = "RequestMan\\Clients\\{$clientName}\\{$clientName}Client";
+
+        self::$client = new $client(self::$requestUrl);
+    }
 
 }
