@@ -20,25 +20,17 @@ class RequestMan
     private static $requestUrl;
 
     protected function __construct(){
-        if(!self::$requestUrl) throw new Exception("No request url set", 401);
-
-        if(self::$requestClient == 'CURL'){
-            self::$client = new CurlClient(self::$requestUrl);
-        }elseif(self::$requestClient == 'GUZZLE'){
-            self::$client = new GuzzleClient(self::$requestUrl);
-        }elseif(self::$requestClient == 'NATEGOOD'){
-            //self::$client = new NateGoodClient(self::$requestUrl);
-        }
+        if(!self::$requestUrl) throw new Exception("No request url set");
+        $client = self::$requestClient.'Client';
+        self::$client = new $client;
     }
 
     public function send(){
 
         self::$response = self::$client->request();
-        
-        //if( self::statusCode() == 200 ) 
+
         return new static( self::$response );
         
-        //throw new Exception("Error Processing Request : Status Code => {self::$client::$http_status_code} : Content Type => {self::$client::$content_type}", 401);
     }
 
     public function toCollection(){
@@ -53,26 +45,37 @@ class RequestMan
         return json_decode( self::$response, true );
     }
 
-    public function getStatusCode(){
-        if(!is_object(self::$client)) throw new Exception("You need to make a request from which a status code will be generated", 401); 
+    public function getStatusCode()
+    {
+        if(!is_object(self::$client)) throw new Exception("You need to make a request from which a status code will be generated"); 
+
         return self::$client::$http_status_code;
     }
 
-    public function getContentType(){
-        if(!is_object(self::$client)) throw new Exception("You need to make a request from which a content type will be generated", 401); 
+    public function getContentType()
+    {
+        if(!is_object(self::$client)) throw new Exception("You need to make a request from which a content type will be generated"); 
+
         return self::$client::$content_type;
     }
 
-    public static function setClient($client){
+    public static function setClient($client)
+    {
         $client = strtoupper (strtolower( $client ) );
-        if( ! collect( self::$supportedClients )->contains( $client ) ) throw new Exception("Client value should be ". implode(' , ',self::$supportedClients), 401);
+
+        if( ! collect( self::$supportedClients )->contains( $client ) ) 
+            throw new Exception("Client value should be ". implode(' , ',self::$supportedClients));
+
         self::$requestClient = $client;
-        return new static('');
+
+        return new static;
     }
 
-    public static function setUrl($url){
+    public static function setUrl($url)
+    {
         self::$requestUrl = $url;
-        return new static('');
+
+        return new static;
     }
 
 }
