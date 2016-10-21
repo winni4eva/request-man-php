@@ -18,7 +18,7 @@ class NategoodClient extends AbstractRequest implements RequestInterface{
         parent::$method = $method;
         parent::$post = $post;
         parent::$headers = $headers;
-        self::$nateGood = new Request;
+        //self::$nateGood = new Request;
     }
 
     private function execute(){
