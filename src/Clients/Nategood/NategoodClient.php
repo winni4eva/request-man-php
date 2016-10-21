@@ -23,18 +23,14 @@ class NategoodClient extends AbstractRequest implements RequestInterface{
 
     private function execute(){
 
-        // $res = self::$guzzle->request(self::$method, self::$endpoint);
-
-        // self::$http_status_code = $res->getStatusCode();
-        
-        // self::$content_type = $res->getHeaderLine('content-type');
-        
-        // return parent::$response = $res->getBody();
-
         $res = \Httpful\Request::get(self::$endpoint)
                                         //->expectsJson()
                                         //->withXTrivialHeader('Just as a demo')
                                         ->sendIt();
+        
+        parent::$content_type = $res->contentType();
+
+        //parent::$http_status_code = $res->getStatusCode();
 
         return parent::$response = $res->body;
     
