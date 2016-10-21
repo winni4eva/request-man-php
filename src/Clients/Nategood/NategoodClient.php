@@ -31,9 +31,9 @@ class NategoodClient extends AbstractRequest implements RequestInterface{
         
         // return parent::$response = $res->getBody();
 
-        $res = \Httpful\Request::get("https://api.github.com/users/nategood")
-                                        ->expectsJson()
-                                        ->withXTrivialHeader('Just as a demo')
+        $res = \Httpful\Request::get(self::$endpoint)
+                                        //->expectsJson()
+                                        //->withXTrivialHeader('Just as a demo')
                                         ->sendIt();
 
         return parent::$response = $res->body;
