@@ -3,7 +3,7 @@ namespace RequestMan;
 
 use RequestMan\Clients\Curl\CurlClient;
 use RequestMan\Clients\Guzzle\GuzzleClient;
-//use RequestMan\Clients\NateGood\NateGoodClient;
+use RequestMan\Clients\NateGood\NateGoodClient;
 use Exception;
 
 class RequestMan
@@ -15,7 +15,7 @@ class RequestMan
 
     private static $requestClient = 'CURL';
 
-    private static $supportedClients = ['CURL','GUZZLE'];
+    private static $supportedClients = ['CURL','GUZZLE','NATEGOOD'];
 
     private static $requestUrl;
 

@@ -1,12 +1,15 @@
 <?php
 
-namespace RequestMan\Clients\NateGood;
+namespace RequestMan\Clients\Nategood;
 
 use RequestMan\AbstractRequest;
 use RequestMan\RequestInterface;
+use RequestMan\RequestTrait;
 use Httpful\Request;
 
-class NateGoodClient extends AbstractRequest implements RequestInterface{
+class NategoodClient extends AbstractRequest implements RequestInterface{
+
+    use RequestTrait;
 
     protected static $nateGood;
 
@@ -14,12 +17,7 @@ class NateGoodClient extends AbstractRequest implements RequestInterface{
         parent::$endpoint = $url;
         parent::$method = $method;
         parent::$post = $post;
-        //self::$nateGood = new Request;
-    }
-
-    public static function request(){
-
-         return (new self(self::$endpoint))->execute();
+        self::$nateGood = new Request;
     }
 
     private function execute(){
@@ -32,9 +30,9 @@ class NateGoodClient extends AbstractRequest implements RequestInterface{
         
         // return parent::$response = $res->getBody();
 
-        $res = Request::get(self::$endpoint)
-                                        //->expectsJson()
-                                        //->withXTrivialHeader('Just as a demo')
+        $res = \Httpful\Request::get("https://api.github.com/users/nategood")
+                                        ->expectsJson()
+                                        ->withXTrivialHeader('Just as a demo')
                                         ->sendIt();
 
         return parent::$response = $res->body;
@@ -42,7 +40,7 @@ class NateGoodClient extends AbstractRequest implements RequestInterface{
     }
 
     public function getClient(){
-        //return self::$guzzle;
+        return self::$nateGood;
     }
 
 }
