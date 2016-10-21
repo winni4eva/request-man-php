@@ -13,10 +13,11 @@ class NategoodClient extends AbstractRequest implements RequestInterface{
 
     protected static $nateGood;
 
-    public function __construct($url, $method = 'GET', array $post = []){
+    public function __construct($url, $method = 'GET', array $post = [], array $headers = []){
         parent::$endpoint = $url;
         parent::$method = $method;
         parent::$post = $post;
+        parent::$headers = $headers;
         self::$nateGood = new Request;
     }
 

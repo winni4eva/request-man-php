@@ -20,7 +20,8 @@ class RequestMan
     private static $requestUrl;
 
 
-    public function send(){
+    public function send()
+    {
 
         if(!self::$requestUrl) throw new Exception("No request url set");
 
@@ -32,7 +33,8 @@ class RequestMan
         
     }
 
-    public function toCollection(){
+    public function toCollection()
+    {
         return collect ( self::jsonToArray() );
     }
 
@@ -40,7 +42,8 @@ class RequestMan
         return self::$response;
     }
 
-    public function jsonToArray(){
+    public function jsonToArray()
+    {
         return json_decode( self::$response, true );
     }
 
@@ -77,7 +80,8 @@ class RequestMan
         return new static;
     }
 
-    private function buildRequestClient(){
+    private function buildRequestClient()
+    {
         $clientName = ucfirst( strtolower( self::$requestClient ) );
 
         $client = "RequestMan\\Clients\\{$clientName}\\{$clientName}Client";

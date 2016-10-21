@@ -18,20 +18,23 @@ class CurlClient extends AbstractRequest implements RequestInterface{
 
     protected $header;
 
-    public function __construct($url, $method = 'GET',array $post = [], $returnTransfer = true, $followLocation = true, $timeout = 1000, $header = false){
-        
+    public function __construct(
+                                $url, 
+                                $method = 'GET', 
+                                array $post = [], 
+                                array $headers = [], 
+                                $returnTransfer = true, 
+                                $followLocation = true, 
+                                $timeout = 1000, 
+                                $header = false)
+    {
         parent::$endpoint = $url;
-
         parent::$method = $method;
-
         parent::$post = $post;
-
+        parent::$headers = $headers;
         $this->returnTransfer = $returnTransfer;
-
         $this->followLocation = $followLocation;
-
         $this->timeout = $timeout;
-
         $this->header = $header;
     }
 
