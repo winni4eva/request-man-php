@@ -28,7 +28,7 @@ class NategoodClient extends AbstractRequest implements RequestInterface{
                                         //->withXTrivialHeader('Just as a demo')
                                         ->sendIt();
         
-        parent::$content_type = $res->contentType();
+        parent::$content_type = $res->content_type;
 
         //parent::$http_status_code = $res->getStatusCode();
 
