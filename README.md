@@ -29,4 +29,4 @@ echo RequestMan::getStatusCode();
 echo RequestMan::getContentType();
 
 # supported clients
-curl, guzzle
+curl, guzzle, nategood
