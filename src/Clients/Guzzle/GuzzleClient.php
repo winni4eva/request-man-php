@@ -18,7 +18,8 @@ class GuzzleClient extends AbstractRequest implements RequestInterface{
         parent::$method = $method;
         parent::$post = $post;
         parent::$headers = $headers;
-        self::$guzzle = new Client($options);
+        parent::$options = $options;
+        self::$guzzle = new Client(parent::$options);
     }
 
     private function execute(){

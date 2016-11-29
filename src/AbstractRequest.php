@@ -19,4 +19,6 @@ abstract class AbstractRequest{
 
     public static $headers;
 
+    public static $options;
+
 }

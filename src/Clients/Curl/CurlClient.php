@@ -20,22 +20,17 @@ class CurlClient extends AbstractRequest implements RequestInterface{
 
     public function __construct(
                                 $url, 
+                                array $headers = [],
+                                array $options = [],  
                                 $method = 'GET', 
-                                array $post = [], 
-                                array $headers = [], 
-                                $returnTransfer = true, 
-                                $followLocation = true, 
-                                $timeout = 1000, 
-                                $header = false)
+                                array $post = []
+                                )
     {
         parent::$endpoint = $url;
         parent::$method = $method;
         parent::$post = $post;
         parent::$headers = $headers;
-        $this->returnTransfer = $returnTransfer;
-        $this->followLocation = $followLocation;
-        $this->timeout = $timeout;
-        $this->header = $header;
+        parent::$options = $options;
     }
 
     private function execute(){
@@ -44,12 +39,12 @@ class CurlClient extends AbstractRequest implements RequestInterface{
 
         curl_setopt_array($ch, [
             CURLOPT_URL => parent::$endpoint,
-            CURLOPT_RETURNTRANSFER => $this->returnTransfer,
+            CURLOPT_RETURNTRANSFER => array_key_exists('returnTransfer', parent::$options)? parent::$options['returnTransfer'] : true,
             CURLOPT_USERAGENT => parent::$agent,
-            CURLOPT_FOLLOWLOCATION => $this->followLocation,
-            CURLOPT_TIMEOUT => $this->timeout,
+            CURLOPT_FOLLOWLOCATION => array_key_exists('followLocation', parent::$options)? parent::$options['followLocation'] : true,
+            CURLOPT_TIMEOUT => array_key_exists('timeout', parent::$options)? parent::$options['timeout'] : 1000,
             //CURLOPT_CONNECTTIMEOUT => 60,
-            CURLOPT_HEADER => $this->header,
+            CURLOPT_HEADER => array_key_exists('header', parent::$options)? parent::$options['header'] : false,
             CURLOPT_POST => (strtoupper(parent::$method) == 'GET')? 0 : 1,
             CURLOPT_POSTFIELDS => parent::$post
         ]);

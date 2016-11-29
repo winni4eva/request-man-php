@@ -17,7 +17,15 @@ class RequestMan
 
     private static $supportedClients = ['CURL','GUZZLE','NATEGOOD'];
 
-    private static $requestUrl;
+    private static $requestUrl = '';
+
+    private static $headers = [];
+
+    private static $options = [];
+
+    private static $method = 'GET';
+
+    private static $post = [];
 
 
     public function send()
@@ -80,13 +88,41 @@ class RequestMan
         return new static;
     }
 
+    public static function setHeaders(array $headers = [])
+    {
+        self::$headers = $headers;
+
+        return new static;
+    }
+
+    public static function setOptions(array $options = [])
+    {
+        self::$options = $options;
+
+        return new static;
+    }
+
+    public static function setMethod($method = 'GET')
+    {
+        self::$method = $method;
+
+        return new static;
+    }
+
+    public static function setPost(array $post = [])
+    {
+        self::$post = $post;
+
+        return new static;
+    }
+
     private function buildRequestClient()
     {
         $clientName = ucfirst( strtolower( self::$requestClient ) );
 
         $client = "RequestMan\\Clients\\{$clientName}\\{$clientName}Client";
 
-        self::$client = new $client(self::$requestUrl);
+        self::$client = new $client(self::$requestUrl, self::$headers, self::$options, self::$method, self::$post);
     }
 
 }
