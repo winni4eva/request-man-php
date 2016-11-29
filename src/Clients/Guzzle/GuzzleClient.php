@@ -23,7 +23,7 @@ class GuzzleClient extends AbstractRequest implements RequestInterface{
 
     private function execute(){
 
-        $res = self::$guzzle->request(parent::$method, parent::$endpoint);
+        $res = self::$guzzle->request(parent::$method, parent::$endpoint, parent::$headers);
 
         parent::$http_status_code = $res->getStatusCode();
         
