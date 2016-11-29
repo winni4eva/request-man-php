@@ -13,7 +13,7 @@ class GuzzleClient extends AbstractRequest implements RequestInterface{
     
     protected static $guzzle;
 
-    public function __construct($url, $method = 'GET', array $post = [], array $headers = []){
+    public function __construct($url, array $headers = [], $method = 'GET', array $post = []){
         parent::$endpoint = $url;
         parent::$method = $method;
         parent::$post = $post;
